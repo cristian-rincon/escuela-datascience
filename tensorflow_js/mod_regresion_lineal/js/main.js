@@ -1,6 +1,7 @@
 import { visualizarDatos } from "./visualizarDatos.js";
 import { crearModelo } from "./crearModelo.js";
 import { convertirDatosATensores } from "./convertirDatosATensores.js";
+import { entrenarModelo } from "./entrenarModelo.js";
 
 var modelo;
 
@@ -20,39 +21,15 @@ async function getData() {
   return datosLimpios;
 }
 
-const optimizador = tf.train.adam();
-const function_perdida = tf.losses.meanSquaredError;
-const metricas = ["mse"];
-
-async function entrenarModelo(model, inputs, labels) {
-  model.compile({
-    optimizer: optimizador,
-    loss: function_perdida,
-    metrics: metricas,
-  });
-
-  const surface = { name: "show.history live", tab: "Training" };
-  const tamanoBatch = 28;
-  const epochs = 50;
-  const history = [];
-
-  return await model.fit(inputs, labels, {
-    tamanoBatch,
-    epochs,
-    shuffle: true,
-    callbacks: tfvis.show.fitCallbacks(
-      { name: "Training Performance" },
-      ["loss", "mse"],
-      { height: 200, callbacks: ["onEpochEnd"] }
-    ),
-  });
-}
+export const optimizador = tf.train.adam();
+export const function_perdida = tf.losses.meanSquaredError;
+export const metricas = ["mse"];
 
 async function run() {
   const data = await getData();
   //console.log(data);
   visualizarDatos(data);
-  const modelo = crearModelo();
+  modelo = crearModelo();
   const tensorData = convertirDatosATensores(data);
   const { entradas, etiquetas } = tensorData;
   entrenarModelo(modelo, entradas, etiquetas);
