@@ -6,7 +6,7 @@ const webcamElement = document.getElementById("webcam");
 const descElementVideo = document.getElementById("descripcion_video");
 
 function utils(number) {
-    return Math.floor(number)
+  return Math.floor(number);
 }
 
 async function app() {
@@ -19,8 +19,9 @@ async function app() {
   while (true) {
     const img = await webcam.capture();
     const result = await net.classify(img);
-    descElementVideo.innerHTML =
-      ` Predicción: ${result[0].className}<br> Probabilidad: ${utils(result[0].probability * 100)} %`;
+    descElementVideo.innerHTML = ` Predicción: ${
+      result[0].className
+    }<br> Probabilidad: ${utils(result[0].probability * 100)} %`;
   }
 }
 
@@ -31,8 +32,9 @@ imgElement.onload = async () => {
 async function displayImagePrediction() {
   try {
     const result = await net.classify(imgElement);
-    descElement.innerHTML =
-      ` Predicción: ${result[0].className}<br> Probabilidad: ${utils(result[0].probability * 100)} %`;
+    descElement.innerHTML = ` Predicción: ${
+      result[0].className
+    }<br> Probabilidad: ${utils(result[0].probability * 100)} %`;
   } catch (error) {
     console.error(error);
   }
