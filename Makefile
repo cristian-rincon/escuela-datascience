@@ -19,6 +19,11 @@ lint:
 	flake8 $(PROJECT_BASE)
 	flake8 --benchmark $(PROJECT_BASE)
 	
+## Auto commit
+commit:
+	git add .
+	git commit
+	git push
 
 ## Style to your code
 style:lint
