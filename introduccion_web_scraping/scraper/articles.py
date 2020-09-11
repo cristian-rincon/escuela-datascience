@@ -17,7 +17,7 @@ articles_list = ['/colombia/cali',
 
 
 
-def get_info(article_soup):
+def get_article_info(article_soup):
 
     info_dict = {}
     # Extracting Title
@@ -77,7 +77,7 @@ def scrap_article(url_article):
 
     article_soup = BeautifulSoup(article.text, 'lxml')
 
-    result_dictionary = get_info(article_soup)
+    result_dictionary = get_article_info(article_soup)
     result_dictionary['url'] = url_article
 
     return result_dictionary
