@@ -1,2 +1,5 @@
 [submodule "Submod"]
 	url = https://github.com/cristian-rincon/introduccion_ing_datos.git
+[submodule "introduccion_ing_datos"]
+	path = introduccion_ing_datos
+	url = https://github.com/cristian-rincon/introduccion_ing_datos.git
