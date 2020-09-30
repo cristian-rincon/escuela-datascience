@@ -12,6 +12,7 @@ lxml = "==4.5.2"
 requests = "==2.24.0"
 selenium = "==3.141.0"
 fake-useragent = "*"
+scrapy = "*"
 
 [requires]
 python_version = "3.8"
