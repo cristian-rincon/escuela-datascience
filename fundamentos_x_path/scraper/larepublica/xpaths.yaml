@@ -1,0 +1,6 @@
+larepublica:
+  url: https://www.larepublica.co/
+  links: //h2/a/@href
+  titulo: //h2/a/text() # [2]
+  resumen: //div[@class="lead"]/p/text()
+  cuerpo: //div[@class="html-content"]//p[not(@class)]/text()
