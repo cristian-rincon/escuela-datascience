@@ -16,21 +16,25 @@ Framework de alto nivel para realizar
 - se pueden exportar los archivos en JSON,CSV, etc.
 - Respeta el archivo robots.txt, no es necesario controlarlo, ya lo hace el framework.
 
-## Crear proyecto con scrapy
+### Generadores - yield = return parcial
+
+Una función con 'poderes' especiales. En una función, python guarda el estado de la función para cuando la volvamos a necesitar y retomar.
+
+### Iterables
+
+A partir de ellos puedo crear un objeto de tipo iterador, para poder recorrer elemento por elemento en un ciclo
+
+### Spiders
+
+Clase de python en la que creamos la lógica para extraer información
+
+### Crear proyecto con scrapy
 
 ```python
 scrapy startproject tutorial
 # Run
 scrapy startproject tutorial
 ```
-
-## Generadores - yield = return parcial
-
-Una función con 'poderes' especiales. En una función, python guarda el estado de la función para cuando la volvamos a necesitar y retomar.
-
-## Iterables
-
-A partir de ellos puedo crear un objeto de tipo iterador, para poder recorrer elemento por elemento en un ciclo
 
 ## Consola interactiva de scrapy
 
@@ -47,6 +51,8 @@ response.xpath('//span[@class="text"]/text()').getall() # trae todos los element
 scrapy crawl quotes -o results/quotes.json
 ```
 
-## Spiders
+## Seguir links
 
-Clase de python en la que creamos la lógica para extraer información
+```bash
+response.follow
+```

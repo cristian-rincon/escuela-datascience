@@ -9,6 +9,8 @@ logger = logging.getLogger(__name__)
 TITLE = str(config()['scraper']['quotes_scraper']['titulo'])
 QUOTES = str(config()['scraper']['quotes_scraper']['citas'])
 TOP_TEN_TAGS = str(config()['scraper']['quotes_scraper']['top_ten_tags'])
+NEXT_PAGE_BUTTON = str(
+    config()['scraper']['quotes_scraper']['next_page_button'])
 
 
 class QuotesSpider(scrapy.Spider):
@@ -17,8 +19,28 @@ class QuotesSpider(scrapy.Spider):
     """
     name = 'quotes'
     start_urls = [
-        'https://quotes.toscrape.com/page/2/'
+        'https://quotes.toscrape.com/page/1/'
     ]
+    # Settings to save in file
+    custom_settings = {
+        'FEED_URI': f'results/{name}.json',
+        'FEED_FORMAT': 'json'
+    }
+
+    def parse_only_quotes(self, response, **kwargs):
+        """
+        Parsear solo las citas.
+        """
+        if kwargs:
+            quotes = kwargs['quotes']
+
+        quotes.extend(response.xpath(QUOTES).getall())
+
+        next_page_button_link = response.xpath(NEXT_PAGE_BUTTON).get()
+        if next_page_button_link:
+            yield response.follow(next_page_button_link, callback=self.parse_only_quotes, cb_kwargs={'quotes': quotes})
+        else:
+            yield {'quotes': quotes}
 
     def parse(self, response):
         """
@@ -31,6 +53,9 @@ class QuotesSpider(scrapy.Spider):
 
         yield {
             'title': title,
-            'quotes': quotes,
             'top_ten_tags': top_ten_tags
         }
+
+        next_page_button_link = response.xpath(NEXT_PAGE_BUTTON).get()
+        if next_page_button_link:
+            yield response.follow(next_page_button_link, callback=self.parse_only_quotes, cb_kwargs={'quotes': quotes})
