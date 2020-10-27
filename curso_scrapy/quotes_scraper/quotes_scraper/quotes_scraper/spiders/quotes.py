@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 
 TITLE = str(config()['scraper']['quotes_scraper']['titulo'])
 QUOTES = str(config()['scraper']['quotes_scraper']['citas'])
-TOP_TEN_TAGS = str(config()['scraper']['quotes_scraper']['top_ten_tags'])
+TOP_TAGS = str(config()['scraper']['quotes_scraper']['top_tags'])
 NEXT_PAGE_BUTTON = str(
     config()['scraper']['quotes_scraper']['next_page_button'])
 
@@ -49,11 +49,17 @@ class QuotesSpider(scrapy.Spider):
 
         title = response.xpath(TITLE).get()
         quotes = response.xpath(QUOTES).getall()
-        top_ten_tags = response.xpath(TOP_TEN_TAGS).getall()
+        top_tags = response.xpath(TOP_TAGS).getall()
+
+        top = getattr(self, 'top', None)
+
+        if top:
+            top = int(top)
+            top_tags = top_tags[:top]
 
         yield {
             'title': title,
-            'top_ten_tags': top_ten_tags
+            'top_tags': top_tags
         }
 
         next_page_button_link = response.xpath(NEXT_PAGE_BUTTON).get()

@@ -56,3 +56,9 @@ scrapy crawl quotes -o results/quotes.json
 ```bash
 response.follow
 ```
+
+## Pasar argumentos a scrapy
+
+```bash
+scrapy crawl quotes -a top=6
+```

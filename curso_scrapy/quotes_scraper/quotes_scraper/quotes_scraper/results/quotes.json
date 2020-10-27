@@ -1,18 +1,7 @@
 [
   {
     "title": "Quotes to Scrape",
-    "top_ten_tags": [
-      "love",
-      "inspirational",
-      "life",
-      "humor",
-      "books",
-      "reading",
-      "friendship",
-      "friends",
-      "truth",
-      "simile"
-    ]
+    "top_tags": ["love", "inspirational", "life", "humor", "books", "reading"]
   },
   {
     "quotes": [
