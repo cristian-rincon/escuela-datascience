@@ -8,6 +8,7 @@ verify_ssl = true
 [packages]
 scrapy = "*"
 autopep8 = "*"
+pyyaml = "*"
 
 [requires]
 python_version = "3.8"

@@ -32,11 +32,21 @@ Una función con 'poderes' especiales. En una función, python guarda el estado 
 
 A partir de ellos puedo crear un objeto de tipo iterador, para poder recorrer elemento por elemento en un ciclo
 
-
 ## Consola interactiva de scrapy
-```python
+
+```bash
 scrapy shell 'https://quotes.toscrape.com/page/2/'
 response.xpath('//h1/a/text()')
 response.xpath('//h1/a/text()').get() # trae un solo elemento
 response.xpath('//span[@class="text"]/text()').getall() # trae todos los elementos que cumplan las condiciones
 ```
+
+## Exportar resultados scrapy
+
+```bash
+scrapy crawl quotes -o results/quotes.json
+```
+
+## Spiders
+
+Clase de python en la que creamos la lógica para extraer información
