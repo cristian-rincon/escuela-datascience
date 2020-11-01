@@ -1,0 +1,7 @@
+scraper:
+    intelligence_agency:
+        url: https://www.cia.gov/library/readingroom/historical-collections
+        title_links: //a[starts-with(@href, "collection") and (parent::h3|parent::h2)]/@href # .getall()
+        title: //h1[@class="documentFirstHeading"]/text() 
+        paragraph: //div[@class="field-item even"]//p[not(@class)]/text()
+        memusage_notify_mail: cristian.o.rincon.b@gmail.com
