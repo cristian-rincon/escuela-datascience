@@ -11,7 +11,7 @@ fetch(
   .then((data) => {
     // Work with JSON data here
     ciaData = data;
-    let cards = ciaData.map(
+    cards = ciaData.map(
       (x, idx) => `
     <div class="card">
     <div class="card-header bg-dark" id="heading${idx}">
@@ -45,7 +45,7 @@ fetch(
   </div>
     `
     );
-    for (let i = 0; i < cards.length; i++) {
+    for (i = 0; i < cards.length; i++) {
       $accordion.innerHTML += cards[i];
     }
   })
