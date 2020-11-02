@@ -1,4 +1,17 @@
 /* Some stuff */
+body {
+  display: flex;
+  min-height: 98vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+footer .col a {
+  text-decoration: none !important;
+  color: #fff;
+}
 
 .cover {
   object-fit: cover !important;

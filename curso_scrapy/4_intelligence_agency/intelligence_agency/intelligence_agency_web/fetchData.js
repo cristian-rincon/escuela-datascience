@@ -1,4 +1,4 @@
-let = $accordion = document.getElementById("accordion");
+let = $accordion = document.getElementById("nav-accordion");
 
 let ciaData = null;
 
