@@ -5,7 +5,7 @@ __config = None
 
 def config():
     if not __config:
-        with open('xpath.yaml') as f:
+        with open('./xpath.yaml') as f:
             config = yaml.load(f, Loader=yaml.FullLoader)
 
     return config

@@ -3,12 +3,17 @@ import datetime
 from .common import config
 
 TIME = datetime.datetime.now()
-MEMUSAGE_NOTIFY_MAIL = str(
-    config()['scraper']['intelligence_agency']['memusage_notify_mail'])
-URL = str(config()['scraper']['intelligence_agency']['url'])
-LINKS = str(config()['scraper']['intelligence_agency']['title_links'])
-TITLE = str(config()['scraper']['intelligence_agency']['title'])
-PARAGRAPH = str(config()['scraper']['intelligence_agency']['paragraph'])
+# MEMUSAGE_NOTIFY_MAIL = str(
+#    config()['scraper']['intelligence_agency']['memusage_notify_mail'])
+MEMUSAGE_NOTIFY_MAIL = 'cristian.o.rincon.b@gmail.com'
+# URL = str(config()['scraper']['intelligence_agency']['url'])
+URL = "https://www.cia.gov/library/readingroom/historical-collections"
+#LINKS = str(config()['scraper']['intelligence_agency']['title_links'])
+LINKS = '//a[starts-with(@href, "collection") and (parent::h3|parent::h2)]/@href'
+#TITLE = str(config()['scraper']['intelligence_agency']['title'])
+TITLE = '//h1[@class="documentFirstHeading"]/text()'
+# PARAGRAPH = str(config()['scraper']['intelligence_agency']['paragraph'])
+PARAGRAPH = '//div[@class="field-item even"]//p[not(@class)]/text()'
 
 
 class SpiderCIA(scrapy.Spider):

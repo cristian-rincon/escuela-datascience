@@ -9,6 +9,7 @@ verify_ssl = true
 scrapy = "*"
 autopep8 = "*"
 pyyaml = "*"
+shub = "*"
 
 [requires]
 python_version = "3.8"
