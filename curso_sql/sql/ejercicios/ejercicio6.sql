@@ -91,3 +91,6 @@ WHERE id IN (
 	) AS duplicados
 	WHERE duplicados.row > 1
 )
+
+
+
