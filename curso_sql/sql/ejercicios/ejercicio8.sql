@@ -1,48 +1,34 @@
--- Ejercicio 7 	| Selectores de rango
+-- Ejercicio 8 	| Eres lo máximo | Mínimos y Máximos
 
--- Opción 1
+-- Opción 1 -- Fecha máxima
 
-SELECT *
-FROM platzi.alumnos 
-WHERE tutor_id IN (1,2,3,4,5)
-
--- Opción 2
-
-SELECT *
-FROM platzi.alumnos 
-WHERE tutor_id BETWEEN 1 AND 10
-
--- Opción 3 - SOLO POSTGRESQL -- Funciones para manejo de rangos
-
-SELECT int4range(10,20) @> 3
-
-SELECT numrange(11.1,22.2) &&  numrange(20.0,30.0)
-
-SELECT UPPER(int8range(15,25))
-SELECT LOWER(int8range(15,25))
-
-SELECT int4range(10,20) * int4range(15,25)
-
-SELECT ISEMPTY (numrange(1,5))
-
-
---
-
-SELECT *
+SELECT fecha_incorporacion
 FROM platzi.alumnos
-WHERE int4range(10,20) @> tutor_id
+ORDER BY fecha_incorporacion DESC
+LIMIT 1
 
--- Reto: Consultar las intersecciones de la tabla alumnos en el campo tutores
+-- Opción 2 -- Fecha máxima
 
--- Solución:
-SELECT 
-	numrange(
-		(SELECT MIN(tutor_id) FROM platzi.alumnos),
-		(SELECT MAX(tutor_id) FROM platzi.alumnos)
-	) * numrange(
-		(SELECT MIN(carrera_id) FROM platzi.alumnos),
-		(SELECT MAX(carrera_id) FROM platzi.alumnos)
-	)
-	
+SELECT carrera_id, 
+	MAX(fecha_incorporacion)
+FROM platzi.alumnos
+GROUP BY carrera_id
+ORDER BY carrera_id
 
+-- Reto: mínimo nombre alfabético y el mínimo por tutor
 
+-- Solución: 
+-- Mínimo nombre alfabético
+
+SELECT nombre
+FROM platzi.alumnos
+ORDER BY nombre ASC
+LIMIT 1
+
+-- Mínimo por tutor
+
+SELECT tutor_id,
+	MIN(nombre)
+FROM platzi.alumnos
+GROUP BY tutor_id
+ORDER BY tutor_id
