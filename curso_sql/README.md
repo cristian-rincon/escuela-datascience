@@ -82,7 +82,7 @@ No todos sus componentes son iguales en las particiones
 
 ## Replicación
 
-- Completa 
+- Completa
 - Parcial
 - Sin replicación
 
@@ -92,3 +92,77 @@ No todos sus componentes son iguales en las particiones
 - Particionada
 - Replicada
 
+---
+
+## Queries distribuídos
+
+![caso_queries_distribuidos](./imagenes/caso_queries_distribuidos.png)
+
+![caso_queries_distribuidos](./imagenes/caso_queries_distribuidos2.png)
+
+![caso_queries_distribuidos](./imagenes/caso_queries_distribuidos3.png)
+
+![caso_queries_distribuidos](./imagenes/caso_queries_distribuidos4.png)
+
+![caso_queries_distribuidos](./imagenes/caso_queries_distribuidos5.png)
+
+---
+
+## Sharding
+
+Técnica que se usa para partir la base de datos para realizar los queries de forma optimizada.
+
+![caso_queries_distribuidos](./imagenes/sharding.png)
+
+### Problemas
+
+- Joins entre shards.
+- Baja elasticidad
+- Reemplaza PK
+
+---
+
+## Window Functions
+
+Son cálculos en algunas tuplas que se encuentran relacionadas con la tupla actual.
+
+Sirven para evitar el uso de self joins y reduce la complejidad alrededor de la analítica, agregaciones y el uso de cursores.
+
+```sql
+-- Ejercicio Window Functions
+
+-- Por carrera
+SELECT *,
+	AVG(colegiatura) OVER (
+	PARTITION BY carrera_id
+	)
+FROM platzi.alumnos
+
+-- Por toda la tabla
+SELECT *,
+	AVG(colegiatura) OVER (
+
+	)
+FROM platzi.alumnos
+
+
+-- Por carrera
+SELECT *,
+	SUM(colegiatura) OVER (
+	PARTITION BY carrera_id
+	ORDER BY colegiatura
+	)
+FROM platzi.alumnos
+
+-- Usando una subquery para manejar WHERE en una columna obtenida a partir de una window function.
+SELECT *
+FROM(
+	SELECT *,
+	RANK() OVER (
+	PARTITION BY carrera_id
+	ORDER BY colegiatura DESC
+	) AS brand_rank
+FROM platzi.alumnos) AS ranked_colegiaturas_por_carrera
+WHERE brand_rank > 3
+ORDER BY brand_rank
+```
