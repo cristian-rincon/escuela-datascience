@@ -28,3 +28,14 @@ ORDER BY a.carrera_id
 -- Reto:Hacer un LEFT JOIN que traiga todo lo que esté en alumnos
 
 -- Solución: 
+
+
+SELECT a.nombre,
+	   a.apellido,
+	   a.carrera_id,
+	   c.id,
+	   c.carrera
+FROM platzi.alumnos AS a
+	FULL OUTER JOIN platzi.carreras AS c -- Trae ambas tablas
+	ON a.carrera_id = c.id -- 
+ORDER BY a.carrera_id
