@@ -9,7 +9,7 @@ verify_ssl = true
 beautifulsoup4 = "==4.9.1"
 jupyterlab = "==2.2.7"
 lxml = "==4.5.2"
-requests = "==2.24.0"
+requests = "==2.25.1"
 selenium = "==3.141.0"
 fake-useragent = "*"
 scrapy = "*"
