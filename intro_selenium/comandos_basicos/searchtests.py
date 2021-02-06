@@ -8,7 +8,7 @@ class SearchTest(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.driver = webdriver.Chrome(executable_path='./chromedriver')
+        cls.driver = webdriver.Chrome(executable_path='../chromedriver')
         driver = cls.driver
         driver.get('http://demo-store.seleniumacademy.com/')
         driver.maximize_window()

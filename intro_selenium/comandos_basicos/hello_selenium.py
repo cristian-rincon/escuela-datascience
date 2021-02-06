@@ -8,7 +8,7 @@ class HelloSelenium(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.driver = webdriver.Chrome(executable_path='./chromedriver')
+        cls.driver = webdriver.Chrome(executable_path='../chromedriver')
         driver = cls.driver
         driver.implicitly_wait(10)
 
