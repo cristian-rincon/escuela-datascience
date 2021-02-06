@@ -4,7 +4,7 @@ from pyunitreport import HTMLTestRunner
 from selenium import webdriver
 
 
-class HelloSelenium(unittest.TestCase):
+class SearchTest(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):

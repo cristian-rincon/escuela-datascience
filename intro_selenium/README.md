@@ -24,3 +24,7 @@
 - CSS Selector
 - Link text
 - Partial link text
+
+## Assertions
+
+Methods that allows you to validate expected value of the test execution. Tests will continue running if the result is true, else will stop.
