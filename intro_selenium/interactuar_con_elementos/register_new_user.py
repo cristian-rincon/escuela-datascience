@@ -9,7 +9,6 @@ class RegisterNewUser(unittest.TestCase):
     def setUpClass(cls):
         cls.driver = webdriver.Chrome(executable_path='../chromedriver')
         driver = cls.driver
-
         driver.get('http://demo-store.seleniumacademy.com/')
         driver.maximize_window()
         driver.implicitly_wait(30)
