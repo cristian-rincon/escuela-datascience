@@ -14,4 +14,13 @@
 - Test Runner: execution orchestator.
 - Test Report: summary of results.
 
+## Find elements by
 
+- ID
+- Attribute name
+- Class name
+- Tag name
+- XPath
+- CSS Selector
+- Link text
+- Partial link text
