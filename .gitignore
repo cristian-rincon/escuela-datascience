@@ -1,3 +1,6 @@
+.vscode/*.json
+chromedriver
+reports/
 # Byte-compiled / optimized / DLL files
 .idea/
 __pycache__/
