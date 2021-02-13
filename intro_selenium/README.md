@@ -11,7 +11,7 @@
 - Test Fixture: Preparations before & after test.
 - Test Cases: code unit to be tested.
 - Test Suite: a collection of Test Cases.
-- Test Runner: execution orchestator.
+- Test Runner: execution orchestrator.
 - Test Report: summary of results.
 
 ## Find elements by
@@ -89,3 +89,13 @@ Propiedades más comunes de la clase WebElement
 | title_is(title)                               | Espera a que la página tenga un título idéntico a como es indicado                                                      | ``WebDriverWait(self.driver, 10).until(expected_conditions.title_is(“Welcome to Platzi”))                                                      ``|
 | visibility_of(element)                        | Espera a que el elemento indicado esté en el DOM, sea visible, su alto y ancho sean mayores a cero                      | ``first_name = self.driver.find_element_by_id(“firstname”) WebDriverWait(self.driver, 10).until(expected_conditions.visibility_of(first_name)) ``|
 | visibility_of_element_located(locator)        | Espera a que el elemento indicado por su selector esté en el DOM, sea visible y que su alto y ancho sean mayores a cero | ``WebDriverWait(self.driver,10).until(expected_conditions.visibility_of_element_located((By.ID,“firstname”)))                                  ``|
+
+
+
+## TDD & DDT
+
+### Test Driven Development
+Desarrollar código con base en pruebas para que pueda cumplirlas.
+
+### Data Driven Testing
+Desarrollar pruebas con base en código ya existente para validar en qué escenarios pasan o fallan.

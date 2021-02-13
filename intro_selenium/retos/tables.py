@@ -33,7 +33,6 @@ class AddRemoveElements(unittest.TestCase):
         except NoSuchElementException as ex:
             self.fail(ex.msg)
 
-
     def tearDown(self) -> None:
         self.driver.close()
 
